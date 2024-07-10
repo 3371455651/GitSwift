@@ -172,20 +172,22 @@
 
     // 定义下载按钮的点击事件处理器
     function download() {
-        var inputUrl = document.getElementById('github-url').value;
-        if (inputUrl) {
-            // 更新下载次数
-            updateDownloadCount();
-            // 构造加速下载的 URL
-            var baseUrl = 'https://jsq.092333.xyz/'; 
-            var encodedUrl = inputUrl; // 使用 encodeURIComponent 来编码 URL
-            // 跳转到加速下载的 URL
-            window.location.href = baseUrl + encodedUrl;
-        } else {
-            alert('请输入GitHub下载地址！');
-        }
-    }   
-
+    var inputUrl = document.getElementById('github-url').value;
+    if (inputUrl) {
+        // 更新下载次数
+        updateDownloadCount();
+        // 提取GitHub URL的路径部分
+        var pathStartIndex = inputUrl.indexOf('github.com/') + 'github.com/'.length;
+        var path = inputUrl.substring(pathStartIndex);
+        // 构造加速下载的 URL
+        var baseUrl = 'https://jsq.092333.xyz/';
+        var encodedUrl = path; 
+        // 跳转到加速下载的 URL
+        window.location.href = baseUrl + encodedUrl;
+    } else {
+        alert('请输入GitHub下载地址！');
+    }
+}
     // 给下载按钮添加点击事件监听器
     var downloadButton = document.querySelector('button');
     if (downloadButton) {
