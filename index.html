@@ -122,6 +122,7 @@
             <p>1. 打开GitHub页面，复制文件的下载链接。</p>
             <p>2. 在上方输入框中粘贴链接。</p>
             <p>3. 点击“开始下载”按钮。</p>
+            <p>4. 示范地址:https://github.com/dotnet/runtime/archive/refs/heads/main.zip</p>
             <p>4. 推荐按下Ctrl + D 添加到书签以便下次使用。<p>
         </div>
         <div id="disclaimer">
@@ -194,9 +195,6 @@
         downloadButton.addEventListener('click', download);
     }
 
-    // 定义一个异步函数来获取 GitHub Star 数量
-    // 异步函数定义保持不变...
-
     // 确保数据加载完成后更新页面
     function loadData() {
         // 从 Firebase 获取下载次数并显示
@@ -209,8 +207,6 @@
     // 调整页面加载事件，确保在数据加载完成后执行
     window.onload = function() {
         loadData();
-        // 获取 GitHub 项目的 star 数量
-        // 异步函数调用保持不变...
     };
 </script>
 </body>
