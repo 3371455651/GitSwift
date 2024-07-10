@@ -1,9 +1,9 @@
 # GitSwift
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yourusername/githubswift/blob/master/LICENSE)
-[![GitHub issues](https://img.shields.io/github/issues/yourusername/githubswift.svg)](https://github.com/yourusername/githubswift/issues)
-[![GitHub stars](https://img.shields.io/github/stars/yourusername/githubswift.svg)](https://github.com/yourusername/githubswift/stargazers)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/3371455651/githubswift/blob/master/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/yourusername/githubswift.svg)](https://github.com/3371455651/githubswift/issues)
+[![GitHub stars](https://img.shields.io/github/stars/yourusername/githubswift.svg)](https://github.com/3371455651/githubswift/stargazers)
 
-GithubSwift 是一个简单、高效的工具，旨在为用户提供快速的 GitHub 文件下载加速服务。它利用先进的技术，优化了下载流程，确保用户能够以最短的时间获取所需的文件。
+GitSwift 是一个简单、高效的工具，旨在为用户提供快速的 GitHub 文件下载加速服务。它利用先进的技术，优化了下载流程，确保用户能够以最短的时间获取所需的文件。
 
 ## 特点
 
@@ -20,14 +20,14 @@ GithubSwift 是一个简单、高效的工具，旨在为用户提供快速的 G
 
 ### 安装
 
-1. 访问 [GithubSwift 网站](https://yourwebsite.com)
+1. 访问 [GitSwift 网站](https://yourwebsite.com)
 2. 按照页面上的指示操作。
 
 ### 使用
 
 - 在输入框中粘贴你的 GitHub 文件下载链接。
 - 点击“开始下载”按钮。
-- 文件将通过 GithubSwift 加速服务开始下载。
+- 文件将通过 GitSwift 加速服务开始下载。
 
 ## 贡献
 
@@ -37,11 +37,11 @@ GithubSwift 是一个简单、高效的工具，旨在为用户提供快速的 G
 
 ## 许可
 
-GithubSwift 采用 [MIT 许可证](https://github.com/yourusername/githubswift/blob/master/LICENSE)。
+GitSwift 采用 [MIT 许可证](https://github.com/3371455651/githubswift/blob/master/LICENSE)。
 
 ## 作者
 
-- **Your Name** - [yourusername](https://github.com/yourusername)
+- **Your Name** - [yourusername](https://github.com/3371455651)
 
 ## 感谢
 
