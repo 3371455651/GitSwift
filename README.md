@@ -20,7 +20,7 @@ GitSwift 是一个简单、高效的工具，旨在为用户提供快速的 GitH
 
 ### 安装
 
-1. 访问 [GitSwift 网站](https://yourwebsite.com)
+1. 访问 [Github加速下载 网站](https://yourwebsite.com)
 2. 按照页面上的指示操作。
 
 ### 使用
@@ -37,7 +37,7 @@ GitSwift 是一个简单、高效的工具，旨在为用户提供快速的 GitH
 
 ## 许可
 
-GitSwift 采用 [MIT 许可证](https://github.com/3371455651/githubswift/blob/master/LICENSE)。
+GitSwift 采用 [MIT 许可证](https://github.com/3371455651/gitswift/blob/master/LICENSE)。
 
 ## 作者
 
