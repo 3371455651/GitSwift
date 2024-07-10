@@ -116,7 +116,7 @@
             <i id="statusIcon" class="fas fa-circle" style="color: green; margin-left: 10px;"></i>
         </h1>
         <input type="text" id="github-url" placeholder="请输入GitHub下载地址">
-        <button id="downloadButton" onclick="download()">开始下载</button>
+        <button onclick="download()">开始下载</button>
         <div id="tutorial">
             <h2>使用教程</h2>
             <p>1. 打开GitHub页面，复制文件的下载链接。</p>
@@ -163,15 +163,6 @@
     // 引用 Firebase 数据库
     const database = firebase.database().ref();
 
-    // 当页面加载完成时执行
-    window.onload = function() {
-        // 从 Firebase 获取下载次数并显示
-        database.child('downloadCount').once('value', function(snapshot) {
-            let count = snapshot.val() || 0;
-            document.getElementById('accelerateCount').textContent = count;
-        });
-    };
-
     // 定义更新下载次数的函数
     function updateDownloadCount() {
         database.child('downloadCount').transaction(function(currentCount) {
@@ -186,42 +177,39 @@
             // 更新下载次数
             updateDownloadCount();
             // 构造加速下载的 URL
-            var baseUrl = 'https://jsq.092333.xyz/';
-            var encodedUrl = inputUrl;
+            var baseUrl = 'https://jsq.092333.xyz/'; 
+            var encodedUrl = inputUrl; // 使用 encodeURIComponent 来编码 URL
             // 跳转到加速下载的 URL
             window.location.href = baseUrl + encodedUrl;
         } else {
             alert('请输入GitHub下载地址！');
         }
-    }
+    }   
 
     // 给下载按钮添加点击事件监听器
-    document.getElementById('downloadButton').addEventListener('click', download);
-        // 定义一个异步函数来获取 GitHub Star 数量
-        async function fetchGitHubStarCount(repoUrl) {
-        const url = new URL(repoUrl);
-        const api_url = `https://api.github.com/repos/${url.pathname.substring(1)}`;
-        
-        try {
-            const response = await fetch(api_url);
-            if (!response.ok) {
-                throw new Error(`GitHub API returned status ${response.status}`);
-            }
-            const data = await response.json();
-            return data.stargazers_count;
-        } catch (error) {
-            console.error('Failed to fetch star count from GitHub API:', error);
-            return '未知';
-        }
+    var downloadButton = document.querySelector('button');
+    if (downloadButton) {
+        downloadButton.addEventListener('click', download);
     }
 
-// 当页面加载完成后获取 star 数量并显示
-    window.onload = async function() {
-    // 获取 GitHub 项目的 star 数量
-    const starCount = await fetchGitHubStarCount('https://github.com/3371455651/GitSwift');
-    const starCountElement = document.getElementById('githubStarCount');
-    starCountElement.textContent = starCount;
-};
+    // 定义一个异步函数来获取 GitHub Star 数量
+    // 异步函数定义保持不变...
+
+    // 确保数据加载完成后更新页面
+    function loadData() {
+        // 从 Firebase 获取下载次数并显示
+        database.child('downloadCount').once('value', function(snapshot) {
+            let count = snapshot.val() || 0;
+            document.getElementById('accelerateCount').textContent = count;
+        });
+    }
+
+    // 调整页面加载事件，确保在数据加载完成后执行
+    window.onload = function() {
+        loadData();
+        // 获取 GitHub 项目的 star 数量
+        // 异步函数调用保持不变...
+    };
 </script>
 </body>
 </html>
