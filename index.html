@@ -195,6 +195,9 @@
         downloadButton.addEventListener('click', download);
     }
 
+    // 定义一个异步函数来获取 GitHub Star 数量
+    // 异步函数定义保持不变...
+
     // 确保数据加载完成后更新页面
     function loadData() {
         // 从 Firebase 获取下载次数并显示
@@ -203,10 +206,32 @@
             document.getElementById('accelerateCount').textContent = count;
         });
     }
+    // 定义获取GitHub仓库star数量的函数
+    function fetchGitHubStars() {
+    const repoUrl = 'https://api.github.com/repos/3371455651/gitswift';
+    fetch(repoUrl)
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error('Network response was not ok.');
+        })
+        .then(data => {
+            const starCount = data.stargazers_count;
+            document.getElementById('githubStarCount').textContent = 'Star: ' + starCount;
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+            document.getElementById('githubStarCount').textContent = 'Star: Error fetching data';
+        });
+    }
 
     // 调整页面加载事件，确保在数据加载完成后执行
     window.onload = function() {
         loadData();
+        fetchGitHubStars();
+        // 获取 GitHub 项目的 star 数量
+        // 异步函数调用保持不变...
     };
 </script>
 </body>
