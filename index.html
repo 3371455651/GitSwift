@@ -83,6 +83,22 @@
 }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <!-- Firebase 配置 -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
+    <script>
+    var firebaseConfig = {
+        apiKey: "AIzaSyBUB1fa3nbceDNejHvmdXtquOTPG-GhoFg",
+        authDomain: "gitswift-usage-statistics.firebaseapp.com",
+        databaseURL: "https://gitswift-usage-statistics-default-rtdb.firebaseio.com/",
+        projectId: "gitswift-usage-statistics",
+        storageBucket: "gitswift-usage-statistics.appspot.com",
+        messagingSenderId: "76184291251",
+        appId: "1:76184291251:web:3766e0f6b5b4e0efcdedc6"
+    };
+    // 初始化 Firebase
+    firebase.initializeApp(firebaseConfig);
+    </script>
 </head>
 <body>
     <div class="container">
@@ -108,13 +124,12 @@
 <div id="accelerateCountContainer">
     <p>总计加速次数: <span id="accelerateCount">0</span></p>
 </div>
-
 <!-- 友情链接 -->
 <div id="friendLinks">
     <h3>友情链接</h3>
     <ul>
-        <li><a href="https://www.example1.com" target="_blank">网站名称1</a></li>
-        <li><a href="https://www.example2.com" target="_blank">网站名称2</a></li>
+        <li><a href="https://blog.092333.xyz" target="_blank">lenmei233's blog</a></li>
+        <li><a href="https://www.092333.xyz" target="_blank">Nostalgia Studio</a></li>
         <!-- 更多友情链接可以按照上面的格式添加 -->
     </ul>
 </div>
@@ -123,32 +138,43 @@
 <div style="text-align: center; margin-bottom: 20px; padding: 10px; background-color: #222; color: #aaa;">
     &copy; 2023~2024 lenmei233. All rights reserved.
 </div>    <!-- 状态和统计信息 -->
-    <script>
-        // 初始的总计加速次数，从localStorage获取，如果没有则为0
-        let totalAccelerateCount = parseInt(localStorage.getItem('totalAccelerateCount'), 10) || 0;
-    
-        // 更新状态图标和统计信息的函数
-        function updateStatus() {
-            const accelerateCountElement = document.getElementById('accelerateCount');
-            accelerateCountElement.textContent = totalAccelerateCount;
+<script>
+    // 引用 Firebase 数据库
+    const database = firebase.database().ref();
+
+    // 当页面加载完成时执行
+    window.onload = function() {
+        // 从 Firebase 获取下载次数并显示
+        database.child('downloadCount').once('value', function(snapshot) {
+            let count = snapshot.val() || 0;
+            document.getElementById('accelerateCount').textContent = count;
+        });
+    };
+
+    // 定义更新下载次数的函数
+    function updateDownloadCount() {
+        database.child('downloadCount').transaction(function(currentCount) {
+            return (currentCount || 0) + 1;
+        });
+    }
+
+    // 定义下载按钮的点击事件处理器
+    function download() {
+        var inputUrl = document.getElementById('github-url').value;
+        if (inputUrl) {
+            // 更新下载次数
+            updateDownloadCount();
+            // 构造加速下载的 URL
+            var baseUrl = 'https://jsq.092333.xyz/';
+            var encodedUrl = inputUrl;
+            // 跳转到加速下载的 URL
+            window.location.href = baseUrl + encodedUrl;
+        } else {
+            alert('请输入GitHub下载地址！');
         }
-    
-        // 页面加载时更新状态显示
-        document.addEventListener('DOMContentLoaded', updateStatus);
-    
-        // 修改download函数，使其在点击下载时递增总计加速次数，并存储到localStorage
-        function download() {
-            var inputUrl = document.getElementById('github-url').value;
-            if (inputUrl) {
-                var baseUrl = 'https://jsq.092333.xyz/';
-                totalAccelerateCount++; // 点击下载时加速次数递增
-                localStorage.setItem('totalAccelerateCount', totalAccelerateCount); // 存储到localStorage
-                updateStatus(); // 更新页面上的加速次数显示
-                window.location.href = baseUrl + inputUrl; // 使用原始输入URL进行跳转
-            } else {
-                alert('请输入GitHub下载地址！');
-            }
-        }
-    </script>
-    </body>
+    }
+
+    // 给下载按钮添加点击事件监听器
+    document.getElementById('downloadButton').addEventListener('click', download);
+</script></body>
 </html>
