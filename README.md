@@ -41,7 +41,7 @@ GitSwift 采用 [MIT 许可证](https://github.com/3371455651/gitswift/blob/mast
 
 ## 作者
 
-- **lenmei233** - [lenmei233](https://github.com/3371455651)
+- **主要开发者** - [lenmei233](https://github.com/3371455651)
 
 ## 感谢
 
