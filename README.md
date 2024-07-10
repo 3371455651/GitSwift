@@ -1,7 +1,7 @@
 # GitSwift
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/3371455651/gitswift/blob/master/LICENSE)
-[![GitHub issues](https://img.shields.io/github/issues/yourusername/gitswift.svg)](https://github.com/3371455651/gitswift/issues)
-[![GitHub stars](https://img.shields.io/github/stars/yourusername/gitswift.svg)](https://github.com/3371455651/gitswift/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/3371455651/gitswift.svg)](https://github.com/3371455651/gitswift/issues)
+[![GitHub stars](https://img.shields.io/github/stars/3371455651/gitswift.svg)](https://github.com/3371455651/gitswift/stargazers)
 
 GitSwift 是一个简单、高效的工具，旨在为用户提供快速的 GitHub 文件下载加速服务。它利用先进的技术，优化了下载流程，确保用户能够以最短的时间获取所需的文件。
 
