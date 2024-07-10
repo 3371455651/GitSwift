@@ -33,6 +33,15 @@
         button:hover {
             background-color: #0056b3;
         }
+        .githubRepo {
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+
+        .githubStarContainer {
+            text-align: center;
+            font-size: 16px;
+        }
         /* 关键帧动画：渐变效果 */
 @keyframes gradientAnimation {
     0% { background-position: 0% 50%; }
@@ -107,7 +116,7 @@
             <i id="statusIcon" class="fas fa-circle" style="color: green; margin-left: 10px;"></i>
         </h1>
         <input type="text" id="github-url" placeholder="请输入GitHub下载地址">
-        <button onclick="download()">开始下载</button>
+        <button id="downloadButton" onclick="download()">开始下载</button>
         <div id="tutorial">
             <h2>使用教程</h2>
             <p>1. 打开GitHub页面，复制文件的下载链接。</p>
@@ -132,9 +141,18 @@
         <li><a href="https://www.092333.xyz" target="_blank">Nostalgia Studio</a></li>
         <!-- 更多友情链接可以按照上面的格式添加 -->
     </ul>
-    <p style="margin-top: 10px;">
-        <a href="https://github.com/3371455651/GitSwift" target="_blank">本项目已在 GitHub 上开源,求Star!</a>
-    </p>
+<!-- GitHub 开源项目链接 -->
+    <div style="margin-top: 10px; text-align: center;">
+    <div class="githubRepo">
+        <a href="https://github.com/3371455651/GitSwift" target="_blank">
+            <i class="fab fa-github fa-2x" style="color: #333;"></i>
+            <span style="margin-left: 10px; display: inline-block; vertical-align: middle;">在 GitHub 上开源，求 Star!</span>
+        </a>
+    </div>
+    <div class="githubStarContainer" style="margin-top: 5px;">
+        <i class="fas fa-star fa-lg" style="color: #ffd700;"></i>
+        <span id="githubStarCount" style="margin-left: 5px; vertical-align: middle;">Star: 0</span>
+    </div>
 </div>
 
 <!-- 版权信息 -->
@@ -179,6 +197,31 @@
 
     // 给下载按钮添加点击事件监听器
     document.getElementById('downloadButton').addEventListener('click', download);
+        // 定义一个异步函数来获取 GitHub Star 数量
+        async function fetchGitHubStarCount(repoUrl) {
+        const url = new URL(repoUrl);
+        const api_url = `https://api.github.com/repos/${url.pathname.substring(1)}`;
+        
+        try {
+            const response = await fetch(api_url);
+            if (!response.ok) {
+                throw new Error(`GitHub API returned status ${response.status}`);
+            }
+            const data = await response.json();
+            return data.stargazers_count;
+        } catch (error) {
+            console.error('Failed to fetch star count from GitHub API:', error);
+            return '未知';
+        }
+    }
+
+// 当页面加载完成后获取 star 数量并显示
+    window.onload = async function() {
+    // 获取 GitHub 项目的 star 数量
+    const starCount = await fetchGitHubStarCount('https://github.com/3371455651/GitSwift');
+    const starCountElement = document.getElementById('githubStarCount');
+    starCountElement.textContent = starCount;
+};
 </script>
 </body>
 </html>
