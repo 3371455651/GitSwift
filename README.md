@@ -1,5 +1,5 @@
 
-[Here is the English version of the provided README for GitSwift](https://github.com/3371455651/gitswift/blob/master/README_EN.md)
+[Here is the English version of the provided README for GitSwift](https://github.com/3371455651/gitswift/blob/main/README_EN.md)
 # GitSwift
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue)](https://github.com/3371455651/gitswift/blob/master/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/3371455651/gitswift?color=green)](https://github.com/3371455651/gitswift/issues)
